@@ -49,7 +49,7 @@ type AccountList struct {
 	snowflake.ID  `gorm:"primarykey;autoIncrement:false"`
 	AccountID     snowflake.ID        `gorm:"not null;"`
 	Title         string              `gorm:"size:64"`
-	RepliesPolicy string              `gorm:"enum('public','followers','none');not null;default:'public'"`
+	RepliesPolicy string              `gorm:"type:text;not null;default:'public'"`
 	Members       []AccountListMember `gorm:"constraint:OnDelete:CASCADE;"`
 }
 
@@ -64,7 +64,7 @@ type AccountMarker struct {
 	CreatedAt  time.Time
 	UpdatedAt  time.Time
 	AccountID  snowflake.ID `gorm:"not null;"`
-	Name       string       `gorm:"enum('home','notifications');not null;"`
+	Name       string       `gorm:"type:text;not null;"`
 	Version    int32        `gorm:"not null;"`
 	LastReadID snowflake.ID `gorm:"not null;"`
 }

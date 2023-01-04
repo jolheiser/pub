@@ -81,14 +81,14 @@ type ReactionRequest struct {
 	CreatedAt time.Time
 	// UpdatedAt is the time the request was last updated.
 	UpdatedAt time.Time
-	ActorID   snowflake.ID `gorm:"uniqueIndex:idx_actor_id_target_id;not null;"`
+	ActorID   snowflake.ID `gorm:"uniqueIndex:idx_reaction_actor_id_target_id;not null;"`
 	// Actor is the actor that is requesting the reaction change.
 	Actor    *Actor       `gorm:"constraint:OnDelete:CASCADE;"`
-	TargetID snowflake.ID `gorm:"uniqueIndex:idx_actor_id_target_id;not null;"`
+	TargetID snowflake.ID `gorm:"uniqueIndex:idx_reaction_actor_id_target_id;not null;"`
 	// Target is the status that is being reacted to.
 	Target *Status `gorm:"constraint:OnDelete:CASCADE;"`
 	// Action is the action to perform, either follow or unfollow.
-	Action string `gorm:"type:enum('like', 'unlike');not null"`
+	Action string `gorm:"type:text;not null"`
 	// Attempts is the number of times the request has been attempted.
 	Attempts uint32 `gorm:"not null;default:0"`
 	// LastAttempt is the time the request was last attempted.

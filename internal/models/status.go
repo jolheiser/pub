@@ -23,7 +23,7 @@ type Status struct {
 	InReplyToActorID *snowflake.ID
 	Sensitive        bool
 	SpoilerText      string `gorm:"size:128"`
-	Visibility       string `gorm:"type:enum('public', 'unlisted', 'private', 'direct', 'limited')"`
+	Visibility       string `gorm:"type:text"`
 	Language         string `gorm:"size:2"`
 	Note             string
 	URI              string `gorm:"uniqueIndex;size:128"`

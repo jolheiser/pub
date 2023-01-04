@@ -88,14 +88,14 @@ type RelationshipRequest struct {
 	CreatedAt time.Time
 	// UpdatedAt is the time the request was last updated.
 	UpdatedAt time.Time
-	ActorID   snowflake.ID `gorm:"uniqueIndex:idx_actor_id_target_id;not null;"`
+	ActorID   snowflake.ID `gorm:"uniqueIndex:idx_relreq_actor_id_target_id;not null;"`
 	// Actor is the actor that is requesting the relationship change.
 	Actor    *Actor       `gorm:"constraint:OnDelete:CASCADE;<-:false;"`
-	TargetID snowflake.ID `gorm:"uniqueIndex:idx_actor_id_target_id;not null;"`
+	TargetID snowflake.ID `gorm:"uniqueIndex:idx_relreq_actor_id_target_id;not null;"`
 	// Target is the actor that is being followed or unfollowed.
 	Target *Actor `gorm:"constraint:OnDelete:CASCADE;<-:false;"`
 	// Action is the action to perform, either follow or unfollow.
-	Action string `gorm:"type:enum('follow', 'unfollow');not null"`
+	Action string `gorm:"type:text;not null"`
 	// Attempts is the number of times the request has been attempted.
 	Attempts uint32 `gorm:"not null;default:0"`
 	// LastAttempt is the time the request was last attempted.

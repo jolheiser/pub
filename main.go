@@ -2,11 +2,9 @@ package main
 
 import (
 	"github.com/alecthomas/kong"
-	"gorm.io/driver/mysql"
+	"github.com/glebarez/sqlite"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
-
-	_ "github.com/go-sql-driver/mysql"
 )
 
 type Context struct {
@@ -42,10 +40,7 @@ func main() {
 				return logger.Warn
 			}()),
 		},
-		Dialector: mysql.New(mysql.Config{
-			DSN:                       cli.DSN + "?charset=utf8mb4&parseTime=True&loc=Local",
-			SkipInitializeWithVersion: false, // auto configure based on currently MySQL version
-		}),
+		Dialector: sqlite.Open("pub.db?_pragma=foreign_keys(1)"),
 	})
 	ctx.FatalIfErrorf(err)
 }

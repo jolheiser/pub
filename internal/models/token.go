@@ -16,7 +16,7 @@ type Token struct {
 	Account           *Account `gorm:"constraint:OnDelete:CASCADE;<-:false;"`
 	ApplicationID     snowflake.ID
 	Application       *Application `gorm:"constraint:OnDelete:CASCADE;<-:false;"`
-	TokenType         string       `gorm:"type:enum('Bearer');not null"`
+	TokenType         string       `gorm:"type:text;not null"`
 	Scope             string       `gorm:"size:64;not null"`
 	AuthorizationCode string       `gorm:"size:64;not null"`
 }
