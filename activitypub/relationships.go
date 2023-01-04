@@ -6,6 +6,7 @@ import (
 
 	"github.com/davecheney/pub/internal/activitypub"
 	"github.com/davecheney/pub/internal/models"
+
 	"gorm.io/gorm"
 )
 

@@ -1,12 +1,14 @@
 package main
 
 import (
+	
+
 	"github.com/davecheney/pub/internal/models"
+
 	"gorm.io/gorm"
 )
 
-type AutoMigrateCmd struct {
-}
+type AutoMigrateCmd struct{}
 
 func (a *AutoMigrateCmd) Run(ctx *Context) error {
 	db, err := gorm.Open(ctx.Dialector, &ctx.Config)

@@ -5,6 +5,7 @@ import (
 
 	"github.com/davecheney/pub/internal/models"
 	"github.com/davecheney/pub/internal/snowflake"
+
 	"golang.org/x/crypto/bcrypt"
 	"gorm.io/gorm"
 )
@@ -33,7 +34,6 @@ func (c *CreateInstanceCmd) Run(ctx *Context) error {
 	}
 
 	return withTransaction(db, func(tx *gorm.DB) error {
-
 		admin := models.Actor{
 			ID:          snowflake.Now(),
 			Type:        "Service",

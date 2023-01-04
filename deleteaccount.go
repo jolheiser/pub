@@ -1,7 +1,10 @@
 package main
 
 import (
+	
+
 	"github.com/davecheney/pub/internal/models"
+
 	"gorm.io/gorm"
 )
 
@@ -30,5 +33,4 @@ func (d *DeleteAccountCmd) Run(ctx *Context) error {
 		// delete the account
 		return tx.Delete(&account).Error
 	})
-
 }

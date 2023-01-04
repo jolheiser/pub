@@ -114,7 +114,6 @@ func (s *ServeCmd) Run(ctx *Context) error {
 				r.Get("/list/{id}", httpx.HandlerFunc(envFn, mastodon.TimelinesListShow))
 				r.Get("/tag/{tag}", httpx.HandlerFunc(envFn, mastodon.TimelinesTagShow))
 			})
-
 		})
 		r.Route("/v2", func(r chi.Router) {
 			r.Get("/instance", httpx.HandlerFunc(envFn, mastodon.InstancesIndexV2))

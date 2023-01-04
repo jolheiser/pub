@@ -9,6 +9,7 @@ import (
 
 	"github.com/davecheney/pub/internal/models"
 	"github.com/davecheney/pub/internal/snowflake"
+
 	"golang.org/x/crypto/bcrypt"
 	"gorm.io/gorm"
 )
@@ -27,7 +28,6 @@ func (c *CreateAccountCmd) Run(ctx *Context) error {
 	}
 
 	return withTransaction(db, func(tx *gorm.DB) error {
-
 		var instance models.Instance
 		if err := tx.Where("domain = ?", c.Domain).First(&instance).Error; err != nil {
 			return err
@@ -78,7 +78,6 @@ func (c *CreateAccountCmd) Run(ctx *Context) error {
 		}
 		return tx.Create(&account).Error
 	})
-
 }
 
 type keypair struct {

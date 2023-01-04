@@ -12,6 +12,7 @@ import (
 
 	"github.com/davecheney/pub/internal/models"
 	"github.com/davecheney/pub/internal/to"
+
 	"github.com/go-chi/chi/v5"
 	"github.com/go-json-experiment/json"
 )
@@ -21,7 +22,6 @@ type Env struct {
 }
 
 func (e *Env) GetKey(keyID string) (crypto.PublicKey, error) {
-
 	// defer resolving the admin actor until we need use it to fetch the remote actor
 	fetch := func(uri string) (*models.Actor, error) {
 		var instance models.Instance

@@ -53,7 +53,6 @@ func RelationshipsCreate(env *Env, w http.ResponseWriter, req *http.Request) err
 	rel, err := models.NewRelationships(env.DB).Follow(user.Actor, &target)
 	if err != nil {
 		return err
-
 	}
 	return to.JSON(w, serialiseRelationship(rel))
 }

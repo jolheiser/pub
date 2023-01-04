@@ -179,7 +179,7 @@ func thread(id snowflake.ID, statuses []models.Status) ([]*models.Status, []*mod
 	}
 
 	var ancestors []*models.Status
-	var l = ids[id].parent
+	l := ids[id].parent
 	for l != nil {
 		ancestors = append(ancestors, l.status)
 		l = l.parent
